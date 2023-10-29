@@ -1,58 +1,61 @@
-#for marking inside table
-board = [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']    
-
-#skull of board
-def display_board():
-  print("-------------")
-  print("|",board[7],"|",board[8],"|",board[9],"|")
-  print("-------------")
-  print("|",board[4],"|",board[5],"|",board[6],"|")
-  print("-------------")
-  print("|",board[1],"|",board[2],"|",board[3],"|")
-  print("-------------")
-
-#for empty position
-def checkposition(value):
-  if board[value]==" ":
-    return True
-  else:
-    print("Choosen already!")
-
-#winning check
-def check():    
-    global Game
+class xo:
+  #for marking inside table
+  def __init__(self):
   
-    #Horizontal winning condition    
-    if(board[1] == board[2] and board[2] == board[3] and board[1] != ' '):    
-        Game="win"   
-    elif(board[4] == board[5] and board[5] == board[6] and board[4] != ' '):    
-        Game="win"   
-    elif(board[7] == board[8] and board[8] == board[9] and board[7] != ' '):    
-        Game="win"   
-    #Vertical Winning Condition    
-    elif(board[1] == board[4] and board[4] == board[7] and board[1] != ' '):    
-        Game="win"  
-    elif(board[2] == board[5] and board[5] == board[8] and board[2] != ' '):    
-        Game="win"     
-    elif(board[3] == board[6] and board[6] == board[9] and board[3] != ' '):    
-        Game="win"   
-    #Diagonal Winning Condition    
-    elif(board[1] == board[5] and board[5] == board[9] and board[5] != ' '):    
-        Game="win"     
-    elif(board[3] == board[5] and board[5] == board[7] and board[5] != ' '):    
-        Game="win"
+    self.board = [' '] * 10
+  
+  #skull of board
+  def display_board(self):
+    print("-------------")
+    print("|",self.board[7],"|",self.board[8],"|",self.board[9],"|")
+    print("-------------")
+    print("|",self.board[4],"|",self.board[5],"|",self.board[6],"|")
+    print("-------------")
+    print("|",self.board[1],"|",self.board[2],"|",self.board[3],"|")
+    print("-------------")
 
-    #to check for draw
-    elif(board[1]!=" " and board[2]!=" " and board[3]!=" " and board[4]!=" " and board[5]!=" " and board[6]!=" " and board[7]!=" " and board[8]!=" " and board[9]!=" "):
-      Game="draw"
+  #for empty position
+  def checkposition(self,value):
+    if self.board[value]==" ":
+      return True
+    else:
+      print("Choosen already!")
+
+  #winning check
+  def check(self):    
+      global Game
+  
+      #Horizontal winning condition    
+      if(self.board[1] == self.board[2] and self.board[2] == self.board[3] and self.board[1] != ' '):    
+          Game="win"   
+      elif(self.board[4] == self.board[5] and self.board[5] == self.board[6] and self.board[4] != ' '):    
+          Game="win"   
+      elif(self.board[7] == self.board[8] and self.board[8] == self.board[9] and self.board[7] != ' '):    
+          Game="win"   
+      #Vertical Winning Condition    
+      elif(self.board[1] == self.board[4] and self.board[4] == self.board[7] and self.board[1] != ' '):    
+          Game="win"  
+      elif(self.board[2] == self.board[5] and self.board[5] == self.board[8] and self.board[2] != ' '):    
+          Game="win"     
+      elif(self.board[3] == self.board[6] and self.board[6] == self.board[9] and self.board[3] != ' '):    
+          Game="win"   
+      #Diagonal Winning Condition    
+      elif(self.board[1] == self.board[5] and self.board[5] == self.board[9] and self.board[5] != ' '):    
+          Game="win"     
+      elif(self.board[3] == self.board[5] and self.board[5] == self.board[7] and self.board[5] != ' '):    
+          Game="win"
+
+      #to check for draw
+      elif(self.board[1]!=" " and self.board[2]!=" " and self.board[3]!=" " and self.board[4]!=" " and self.board[5]!=" " and self.board[6]!=" " and self.board[7]!=" " and self.board[8]!=" " and self.board[9]!=" "):
+        Game="draw"
 
 
-
+game=xo()
 #main game code
 Game="running"
 player=1
 while Game=="running":
-  display_board()
+  game.display_board()
   if (player%2==0):
     print("Player 2's chance!")
     mark="O"
@@ -62,13 +65,13 @@ while Game=="running":
 
   value=int(input("Enter a position from 1 to 9: "))
   print()
-  if (checkposition(value)):
-    board[value]=mark
+  if (game.checkposition(value)):
+    game.board[value]=mark
     player+=1
-    check()
+    game.check()
 
 #code after win
-display_board()
+game.display_board()
 player-+1
 while (Game=="win"):
   if(player%2==0):
@@ -82,19 +85,3 @@ while (Game=="win"):
 while (Game=='draw'):
   print("Game Draw!")
   break
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
