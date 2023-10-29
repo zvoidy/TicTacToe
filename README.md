@@ -1,3 +1,2 @@
-# TicTacToe
-Playin XO game with computer.
-using X and O as markers.
+# ***TicTacToe***
+Playing ***XO*** game with computer,using `X` and `O` as markers.
